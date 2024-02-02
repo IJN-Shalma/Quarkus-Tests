@@ -1,10 +1,11 @@
-package org.acme;
+package org.acme.Card;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -18,8 +19,19 @@ import jakarta.ws.rs.core.*;
 @Path("/cards")
 public class CardResource{
     
-    public static List<Card> cards = new ArrayList<>();
+    @Inject
+    CardRepository cardRepository;
 
+    @GET
+    @Path("/{cardId}")
+    public Response getCard(@PathParam("cardId") Int cardId){
+        Card card = cardRepository.findById(cardId);
+        return Response.ok(card).build();
+    }
+
+    // TODO: Continue at minute 6:10 of  https://www.youtube.com/watch?v=HTmecFdixgg
+
+    /* 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCards(){
@@ -56,7 +68,7 @@ public class CardResource{
     @Consumes(MediaType.APPLICATION_JSON)
     public Response deleteCard(@PathParam("cardIdToDelete") int cardIdToDelete){
 
-        /* Find (if exists) card to delte. findFirst() returns and Optional*/
+        // Find (if exists) card to delte. findFirst() returns and Optional
         Optional<Card> cardToDelete =  cards.stream().filter(
             card -> {
                 return card.getId() == cardIdToDelete;
@@ -72,13 +84,11 @@ public class CardResource{
         }
     }
 
-    /*
-     * Utilities
-    */
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/size")
     public Integer countCards(){
         return cards.size();
     }
+    */
 }

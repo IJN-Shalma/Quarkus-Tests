@@ -1,6 +1,7 @@
-package org.acme;
+package org.acme.Card;
+import io.quarkus.mongodb.panache.PanacheMongoEntity;
 
-public class Card {
+public class Card extends PanacheMongoEntity{
     int id;
     int nCopies;
     String name;
