@@ -8,11 +8,15 @@ import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class CardRepository implements PanacheMongoRepository<Card>{
-    public Card findById(int id){
-        return find("id", id).firstResult();
+    public List<Card> findOrderedById(){
+        return listAll(Sort.by("_id"));
     }
 
-    public List<Card> findOrderedName(){
-        return listAll(Sort.by("name"));
+    public Card findByName(String name) {
+        return find("name", name).firstResult(); 
+    }
+
+    public Card findById(int id){
+        return find("_id", id).firstResult(); // "id" doesn't work, use _id
     }
 }
