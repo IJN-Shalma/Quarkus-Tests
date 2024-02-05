@@ -1,5 +1,5 @@
 # Quarkus Tests
-Project to test Quarkus and Docker images
+Project to test Quarkus, Docker images and Firebase Auth
 
 ## How to run
 In root folder, open new shell and execute

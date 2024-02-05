@@ -1,13 +1,10 @@
 package org.acme;
 
-import io.quarkus.test.common.http.TestHTTPEndpoint;
-import io.quarkus.test.common.http.TestHTTPResource;
 import io.quarkus.test.junit.QuarkusTest;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 
-import org.acme.Card.CardResource;
 import org.junit.jupiter.api.Test;
 
 @QuarkusTest
